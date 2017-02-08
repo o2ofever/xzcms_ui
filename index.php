@@ -149,7 +149,7 @@ else{
 						$('.tableContent').attr('style', 'width: auto');
 						
 						var wdTopBar = $('.developer').width(); var wdSideBar = $('.sideBar').width(); var wdRight = wdTopBar - wdSideBar-100; console.log('wdRight = ' +wdRight);
-						$('.content').attr('style', 'width: auto');
+						$('.content').attr('style', 'width:'+wdRight+'px');
 					}
 					
 					if ($('.feature_table').is(':visible')){
