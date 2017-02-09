@@ -128,28 +128,13 @@ else{
 			<script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
 			<script>
 					window.onload = function (){
-						/*
-						function resizeToMinimum(){
-						  var minimum    = [1250, 888];
-						  var current    = [window.outerWidth, window.outerHeight];
-						  var restricted = [];
-						  var i          = 2;
-
-						  while(i-- > 0){
-							restricted[i] = minimum[i] > current[i] ? minimum[i] : current[i];
-						  }
-
-						  window.resizeTo(current[0], current[1]);
-						}
-
-						window.addEventListener('resize', resizeToMinimum, false); */
 
 						$('.contentmanage').attr('style', 'width: auto');
 						$('.subCatalogList > a').attr('style', 'height: 50px'); $('.selected > a').attr('style', 'height: 50px');				
 						document.getElementsByTagName('a')[20].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\"material-icons\">collections</div> <div style = \'float: left; margin-top: 5px;\'>图文组自动回复</div>';
 						document.getElementsByTagName('a')[1].innerHTML = '登出 Logout';
-						document.getElementsByTagName('a')[3].innerHTML = ' 技术支援 <i style = \'margin-top: 29px;\' class=\'fa fa-support\'></i>';
-						document.getElementsByTagName('a')[4].innerHTML = '设定 <i class = \'fa fa-cogs\'></i>';
+						document.getElementsByTagName('a')[3].innerHTML = ' 技術支援 <i style = \'margin-top: 29px;\' class=\'fa fa-support\'></i>';
+						document.getElementsByTagName('a')[4].innerHTML = '設定 <i class = \'fa fa-cogs\'></i>';
 						document.getElementsByTagName('a')[5].innerHTML = '案例 <i class = \'fa fa-trophy\'></i>';
 						document.getElementsByTagName('a')[6].innerHTML = '价钱 <span class = \'glyphicon glyphicon-shopping-cart\'></span>';
 						document.getElementsByTagName('a')[7].innerHTML = '关于我们 <span class = \'fa fa-venus-mars\'></span>';
@@ -167,23 +152,39 @@ else{
 						$('.ckit').attr('style', 'padding-left: 10px');
 						
 
-						
-
 					}
 					
+					
 					if ($('.feature_table').is(':visible')){
-						
-						var wd = $(window).width(); var wdSideBar = $('.sideBar').width(); var wdRight = wd - wdSideBar-100;
-							$('.feature_table').detach();
-							$('.container').css({'border':'solid 1px #c3c3c3', 'width':'535px', 'height':'535px'});
-							// $('.content').attr('style', '');
-							$('.content').css({'float':'left', 'width': wdRight+'px'});
-						}
+							$('.feature_table').css('display', 'none');
+						var htSideBar = $('.sideBar').height();
+						var wd = $(window).width(); var wdSideBar = $('.sideBar').width(); var wdRight = wd - wdSideBar-7; var RcontainerBox = wdRight * 0.85;
+							
+							$('.container').css({'border':'solid 1px #c3c3c3', 'width': RcontainerBox+'px', 'height':'535px'});
+							$('.content').css({'float':'left', 'width': wdRight+'px', 'height': htSideBar+'px'});
+							$('.paging').css('display', 'none');
+					}
 					window.onresize = function(){
 						var wd = $(window).width();
-						var wdSideBar = $('.sideBar').width(); var wdRight = wd - wdSideBar-100;
+						var wdSideBar = $('.sideBar').width(); var wdRight = wd - wdSideBar-7;
 						$('.content').css({'float':'left', 'width': wdRight+'px'});
 					}
+					
+					$('.class_game').mouseover(function(){
+						$('.feature_table').css('display', 'block');
+						$('.container').attr('style', 'display: none !important');
+						$('.paging').attr('style', 'display: block !important');
+					});
+					
+					$('.class_game').mouseout(function(){
+						$('.feature_table').css('display', 'none');
+						var htSideBar = $('.sideBar').height();
+						var wd = $(window).width(); var wdSideBar = $('.sideBar').width(); var wdRight = wd - wdSideBar-7; var RcontainerBox = wdRight * 0.85;
+							
+							$('.container').css({'display':'block', 'border':'solid 1px #c3c3c3', 'width': RcontainerBox+'px', 'height':'535px'});
+							$('.content').css({'float':'left', 'width': wdRight+'px', 'height': htSideBar+'px'});
+							$('.paging').css('display', 'none');
+					});
 				</script>";
 }
 ?>
