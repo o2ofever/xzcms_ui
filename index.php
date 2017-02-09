@@ -128,6 +128,23 @@ else{
 			<script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
 			<script>
 					window.onload = function (){
+						/*
+						function resizeToMinimum(){
+						  var minimum    = [1250, 888];
+						  var current    = [window.outerWidth, window.outerHeight];
+						  var restricted = [];
+						  var i          = 2;
+
+						  while(i-- > 0){
+							restricted[i] = minimum[i] > current[i] ? minimum[i] : current[i];
+						  }
+
+						  window.resizeTo(current[0], current[1]);
+						}
+
+						window.addEventListener('resize', resizeToMinimum, false); */
+
+						$('.contentmanage').attr('style', 'width: auto');
 						$('.subCatalogList > a').attr('style', 'height: 50px'); $('.selected > a').attr('style', 'height: 50px');				
 						document.getElementsByTagName('a')[20].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\"material-icons\">collections</div> <div style = \'float: left; margin-top: 5px;\'>图文组自动回复</div>';
 						document.getElementsByTagName('a')[1].innerHTML = '登出 Logout';
@@ -149,14 +166,16 @@ else{
 						$('.tableContent').attr('style', 'width: auto');
 						
 						var wdTopBar = $('.developer').width(); var wdSideBar = $('.sideBar').width(); var wdRight = wdTopBar - wdSideBar-100; console.log('wdRight = ' +wdRight);
-						$('.content').attr('style', 'width:'+wdRight+'px');
+						
+						$('.content').attr('style', 'width:'+wdRight+'px', 'float:left');
 					}
 					
 					if ($('.feature_table').is(':visible')){
 							$('.feature_table').detach();
 							$('.container').css({\"border\":\"solid 1px #c3c3c3\", \"width\":\"535px\", \"height\":\"535px\"});
-							
+							$('.content').attr('style', 'float: left');
 						}
+					
 				</script>";
 }
 ?>
