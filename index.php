@@ -161,21 +161,29 @@ else{
 						document.getElementsByTagName('a')[21].innerHTML = '<span style = \'float: left; margin-top: 5px;\' class=\'glyphicon glyphicon-headphones\'></span> <div style = \'float: left; margin-top: 5px;\'>语音回复</div>';
 						document.getElementsByTagName('a')[22].innerHTML = '<span style = \'float: left; margin-top: 5px;\' class=\'glyphicon glyphicon-bullhorn\'></span> <div style = \'float: left; margin-top: 5px;\'>群发</div>';
 						document.getElementsByTagName('a')[26].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\"material-icons\">event_note</div> <div style = \'float: left; margin-top: 5px;\'>自定义菜单</div>';
-						$('.sideBar').attr('style','width: 250px !important');
-						$('.subCatalogList').css({'width':'250px'});
+						$('.sideBar').attr('style','width: 230px !important');
+						$('.subCatalogList').css({'width':'210px'});
 						$('.tableContent').attr('style', 'width: auto');
+						$('.ckit').attr('style', 'padding-left: 10px');
 						
-						var wdTopBar = $('.developer').width(); var wdSideBar = $('.sideBar').width(); var wdRight = wdTopBar - wdSideBar-100; console.log('wdRight = ' +wdRight);
+
 						
-						$('.content').attr('style', 'width:'+wdRight+'px', 'float:left');
+
 					}
 					
 					if ($('.feature_table').is(':visible')){
+						
+						var wd = $(window).width(); var wdSideBar = $('.sideBar').width(); var wdRight = wd - wdSideBar-100;
 							$('.feature_table').detach();
-							$('.container').css({\"border\":\"solid 1px #c3c3c3\", \"width\":\"535px\", \"height\":\"535px\"});
-							$('.content').attr('style', 'float: left');
+							$('.container').css({'border':'solid 1px #c3c3c3', 'width':'535px', 'height':'535px'});
+							// $('.content').attr('style', '');
+							$('.content').css({'float':'left', 'width': wdRight+'px'});
 						}
-					
+					window.onresize = function(){
+						var wd = $(window).width();
+						var wdSideBar = $('.sideBar').width(); var wdRight = wd - wdSideBar-100;
+						$('.content').css({'float':'left', 'width': wdRight+'px'});
+					}
 				</script>";
 }
 ?>
