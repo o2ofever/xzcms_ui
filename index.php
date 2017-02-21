@@ -4,18 +4,7 @@ header("Content-type: text/html; charset=utf-8");
 ini_set('display_errors', '1');
 error_reporting(E_ALL ^ E_NOTICE);
 
-
-if ($_GET['a'] === 'price')
-	{
-		echo "<script>
-				window.open('http://www.o2ofever.com/price');
-				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
-				win.focus();
-			  </script>";
-		die();
-		
-	}
-elseif  ($_GET['a'] === 'common')
+if  ($_GET['a'] === 'common')
 	{
 		echo "<script>
 				window.open('http://www.o2ofever.com/case-studies/power-888');
@@ -118,49 +107,67 @@ else{
 			<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 			<script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
 			<script>
-					window.onload = function (){
+				var tok = '';
+				
+				function queryParsor(nam){
+					
 								var  url = window.location.href;
-								var name = 'm';
-								name = name.replace(/[\[\]]/g, '\\$&');
+								name = nam.replace(/[\[\]]/g, '\\$&');
 								var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
 								var results = regex.exec(url);
 								if (!results) console.log('result = null');
 								if (!results[2]) console.log('result = empty');
-								var m_parameter = decodeURIComponent(results[2].replace(/\+/g, \" \"));
-								console.log('m_parameter ='+m_parameter);
-						if ($('.norightborder').is(':visible')){
-							if($('.btnGreens').is(':visible')){
-								var attr = $('.btnGreens').attr('onclick');
-								var attrlen = attr.length;
-								var exp = attr.split(',');
-								var tok = exp[1].split('\'');
-							}
-						}
-						if (m_parameter == 'Function')
-						{
-							$('.contentmanage').attr('style', 'width: auto');
-							$('.subCatalogList > a').attr('style', 'height: 50px'); $('.selected > a').attr('style', 'height: 50px');				
-							document.getElementsByTagName('a')[20].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\'material-icons\'>collections</div> <div style = \'float: left; margin-top: 5px;\'>图文组自动回复</div>';
-							document.getElementsByTagName('a')[1].innerHTML = '登出 Logout';
-							document.getElementsByTagName('a')[3].innerHTML = '技術支援 <i style = \'margin-top: 29px;\' class=\'fa fa-support\'></i>';
-							document.getElementsByTagName('a')[4].innerHTML = '設定 <i class = \'fa fa-cogs\'></i>';
-							document.getElementsByTagName('a')[5].innerHTML = '案例 <i class = \'fa fa-trophy\'></i>';
-							document.getElementsByTagName('a')[6].innerHTML = '價錢 <span class = \'glyphicon glyphicon-shopping-cart\'></span>';
-							document.getElementsByTagName('a')[7].innerHTML = '關於我們 <span class = \'fa fa-venus-mars\'></span>';
-							document.getElementsByTagName('a')[8].innerHTML = '功能 <span class = \'material-icons\' style = \'margin-top: 5px\'>widgets</span>';
-							document.getElementsByTagName('a')[16].innerHTML = '<span style = \'float: left; margin-top: -2px;\' class = \'fa fa-bar-chart\'></span> <div style = \'float: left; margin-top: 5px;\'>數據統計</div>';
-							
-							document.getElementsByTagName('a')[17].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\"material-icons\">mood</div> <div style = \'float: left; margin-top: 5px;\'>關注時自動回復</div>';
-							document.getElementsByTagName('a')[18].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class = \'glyphicon glyphicon-send\'></div> <div style = \'float: left; margin-top: 5px;\'>純文字自動回復</div>';
-							document.getElementsByTagName('a')[19].innerHTML = '<span style = \'float: left; margin-top: -2px;\' class = \'glyphicon glyphicon-picture\'></span><div style = \'float: left; margin-top: 5px;\'>圖文自動回復</div>';
-							document.getElementsByTagName('a')[21].innerHTML = '<span style = \'float: left; margin-top: 5px;\' class=\'glyphicon glyphicon-headphones\'></span> <div style = \'float: left; margin-top: 5px;\'>語音回復</div>';
-							document.getElementsByTagName('a')[22].innerHTML = '<span style = \'float: left; margin-top: 5px;\' class=\'glyphicon glyphicon-bullhorn\'></span> <div style = \'float: left; margin-top: 5px;\'>群發</div>';
-							document.getElementsByTagName('a')[26].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\"material-icons\">event_note</div> <div style = \'float: left; margin-top: 5px;\'>自定義菜單</div>';
-							$('.sideBar').attr('style','width: 230px !important');
-							$('.subCatalogList').css({'width':'210px'});
-							$('.tableContent').attr('style', 'width: auto');
-							$('.ckit').attr('style', 'padding-left: 10px');
-						}
+								var queryPara = decodeURIComponent(results[2].replace(/\+/g, \" \"));
+								return(queryPara);
+				}
+				
+					window.onload = function (){
+
+						var g = queryParsor('g');	console.log('g = '+g);
+						var m = queryParsor('m');	console.log('m = '+m);
+						var a = queryParsor('a');	console.log('a = '+a);
+									
+							if ($('.norightborder').is(':visible')){
+									if($('.btnGreens').is(':visible')){
+											var attr = $('.btnGreens').attr('onclick');
+											var attrlen = attr.length;
+											var exp = attr.split(',');
+											tok = exp[1].split('\'');
+										}
+								}
+								if (m == 'Function')
+								{
+									$('.contentmanage').attr('style', 'width: auto');
+									$('.subCatalogList > a').attr('style', 'height: 50px'); $('.selected > a').attr('style', 'height: 50px');				
+									document.getElementsByTagName('a')[20].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\'material-icons\'>collections</div> <div style = \'float: left; margin-top: 5px;\'>图文组自动回复</div>';
+									document.getElementsByTagName('a')[1].innerHTML = '登出 Logout';
+									document.getElementsByTagName('a')[3].innerHTML = '技術支援 <i style = \'margin-top: 29px;\' class=\'fa fa-support\'></i>';
+									document.getElementsByTagName('a')[4].innerHTML = '設定 <i class = \'fa fa-cogs\'></i>';
+									document.getElementsByTagName('a')[5].innerHTML = '案例 <i class = \'fa fa-trophy\'></i>';
+									document.getElementsByTagName('a')[6].innerHTML = '價錢 <span class = \'glyphicon glyphicon-shopping-cart\'></span>';
+									document.getElementsByTagName('a')[7].innerHTML = '關於我們 <span class = \'fa fa-venus-mars\'></span>';
+									document.getElementsByTagName('a')[8].innerHTML = '功能 <span class = \'material-icons\' style = \'margin-top: 5px\'>widgets</span>';
+									document.getElementsByTagName('a')[16].innerHTML = '<span style = \'float: left; margin-top: -2px;\' class = \'fa fa-bar-chart\'></span> <div style = \'float: left; margin-top: 5px;\'>數據統計</div>';
+									
+									document.getElementsByTagName('a')[17].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\"material-icons\">mood</div> <div style = \'float: left; margin-top: 5px;\'>關注時自動回復</div>';
+									document.getElementsByTagName('a')[18].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class = \'glyphicon glyphicon-send\'></div> <div style = \'float: left; margin-top: 5px;\'>純文字自動回復</div>';
+									document.getElementsByTagName('a')[19].innerHTML = '<span style = \'float: left; margin-top: -2px;\' class = \'glyphicon glyphicon-picture\'></span><div style = \'float: left; margin-top: 5px;\'>圖文自動回復</div>';
+									document.getElementsByTagName('a')[21].innerHTML = '<span style = \'float: left; margin-top: 5px;\' class=\'glyphicon glyphicon-headphones\'></span> <div style = \'float: left; margin-top: 5px;\'>語音回復</div>';
+									document.getElementsByTagName('a')[22].innerHTML = '<span style = \'float: left; margin-top: 5px;\' class=\'glyphicon glyphicon-bullhorn\'></span> <div style = \'float: left; margin-top: 5px;\'>群發</div>';
+									document.getElementsByTagName('a')[26].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\"material-icons\">event_note</div> <div style = \'float: left; margin-top: 5px;\'>自定義菜單</div>';
+									$('.sideBar').attr('style','width: 230px !important');
+									$('.subCatalogList').css({'width':'210px'});
+									$('.tableContent').attr('style', 'width: auto');
+									$('.ckit').attr('style', 'padding-left: 10px');
+								}
+								
+								if (g == 'Home' && m == 'Index' && a == 'price')
+								{	// price detected
+									console.log('tok = '+tok);
+									window.open('http://www.o2ofever.com/price');
+									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
+									win.focus();
+								}
 
 					}
 					
@@ -206,5 +213,12 @@ else{
 							$('.container').css({'display':'block', 'border':'solid 1px #c3c3c3', 'width': RcontainerBox+'px', 'height':'535px', 'padding-left': pl+'px', 'border':'5px solid #c3c3c3'});
 					}
 				</script>";
+				
+	if ($_GET['a'] === 'price')
+	{
+		echo "";
+		die();
+		
+	}
 }
 ?>
