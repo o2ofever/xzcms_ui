@@ -3,64 +3,11 @@
 header("Content-type: text/html; charset=utf-8");
 ini_set('display_errors', '1');
 error_reporting(E_ALL ^ E_NOTICE);
-
-if  ($_GET['a'] === 'common')
-	{
-		echo "<script>
-				window.open('http://www.o2ofever.com/case-studies/power-888');
-				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
-				win.focus();
-			  </script>";
-		die();
-		
-	}
-elseif  ($_GET['a'] === 'help')
-	{
-		echo "<script>
-				window.open('http://www.o2ofever.com/contact-us');
-				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
-				win.focus();
-			  </script>";
-		die();
-		
-	}
-elseif  ($_GET['a'] === 'about2')
-	{
-		echo "<script>
-				
-				window.open('http://www.o2ofever.com/about-us');
-				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
-				win.focus();
-			  </script>";
-		die();
-		
-	}
-elseif  ($_GET['a'] === 'fc')
-	{
-		echo "<script>
-				window.open('http://www.o2ofever.com/functionalities');
-				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
-				win.focus();
-			  </script>";
-		die();
-		
-	}
-elseif  ($_GET['a'] === NULL)
-	{
-		echo "<script>
-				window.open('http://www.o2ofever.com/');
-				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
-				win.focus();
-			  </script>";
-		die();
-		
-	}
 	
 	
 	
 		
 if (get_magic_quotes_gpc()) {
-
  function stripslashes_deep($value){
   $value = is_array($value) ?
   array_map('stripslashes_deep', $value) :
@@ -72,10 +19,8 @@ if (get_magic_quotes_gpc()) {
  $_GET = array_map('stripslashes_deep', $_GET);
  $_COOKIE = array_map('stripslashes_deep', $_COOKIE);
 }
-
 	
 define('APP_NAME', 'cms');
-
 define('CONF_PATH','./Conf/');
 define('TMPL_PATH','./tpl/');
 $GLOBALS['_beginTime'] = microtime(TRUE);
@@ -90,7 +35,6 @@ define('APP_DEBUG',1);
 defined('APP_DEBUG') 	or define('APP_DEBUG',false);
 $runtime = defined('MODE_NAME')?'~'.strtolower(MODE_NAME).'_runtime.php':'~runtime.php';
 defined('RUNTIME_FILE') or define('RUNTIME_FILE',RUNTIME_PATH.$runtime);
-
 if(!APP_DEBUG && is_file(RUNTIME_FILE)) {
     require RUNTIME_FILE;
 }
@@ -127,34 +71,23 @@ else{
 								return(queryPara);
 				}
 				
-				
-				function huoQuTok(){
-					if ($('.norightborder').is(':visible')){
-									if($('.btnGreens').is(':visible')){
-											var attr = $('.btnGreens').attr('onclick');
-											var attrlen = attr.length;
-											var exp = attr.split(',');
-											var tok = exp[1].split('\'');
-											tok = tok[1];
-										}
-								}
-					return tok;
-				}
-				/*	 var tok = huoQuTok();
-					console.log('ln 138 tok = '+tok);
-					sessionStorage.setItem('tok', tok);
-				*/	
 						window.onload = function (){
+							
+							
 							var g = queryParser('g');	console.log('g = '+g);
 							var m = queryParser('m');	console.log('m = '+m);
 							var a = queryParser('a');	console.log('a = '+a);
 							
 							if (queryParser('token')){
 								var t = queryParser('token');	console.log('ln 151 t = '+t);
-								var id = queryParser('id');
 								localStorage.setItem('tok', t);
+							}
+							
+							if (queryParser('id')){
+								var id = queryParser('id');
 								localStorage.setItem('ID', id);
 							}
+							
 								if (m == 'Function')
 								{
 									var t = queryParser('token'); 	console.log('ln 155 t = '+t);
@@ -182,7 +115,7 @@ else{
 									$('.ckit').attr('style', 'padding-left: 10px');
 								}
 								
-								if (g == 'Home' && m == 'Index' && a == 'price')
+								else if (g == 'Home' && m == 'Index' && a == 'price')
 								{	// price detected
 									
 									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
@@ -191,7 +124,56 @@ else{
 									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
 									win.focus();
 								}
-
+								
+								else if (g == 'Home' && m == 'Index' && a == 'fc')
+								{	// price detected
+									
+									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
+									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
+									window.open('http://www.o2ofever.com/price');
+									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
+									win.focus();
+								}
+								
+								else if (g == 'Home' && m == 'Index' && a == 'aboutus2')
+								{	// price detected
+									
+									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
+									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
+									window.open('http://www.o2ofever.com/price');
+									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
+									win.focus();
+								}
+								
+								else if (g == 'Home' && m == 'Index' && a == 'common')
+								{	// price detected
+									
+									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
+									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
+									window.open('http://www.o2ofever.com/price');
+									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
+									win.focus();
+								}
+								
+								else if (g == 'Home' && m == 'Index' && a == 'index')
+								{	// price detected
+									
+									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
+									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
+									window.open('http://www.o2ofever.com/price');
+									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
+									win.focus();
+								}
+								
+								else if (g == 'Home' && m == 'Index' && a == 'help')
+								{	// price detected
+									
+									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
+									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
+									window.open('http://www.o2ofever.com/price');
+									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
+									win.focus();
+								}
 					}
 					
 					
