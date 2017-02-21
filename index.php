@@ -4,9 +4,6 @@ header("Content-type: text/html; charset=utf-8");
 ini_set('display_errors', '1');
 error_reporting(E_ALL ^ E_NOTICE);
 	
-	
-	
-		
 if (get_magic_quotes_gpc()) {
  function stripslashes_deep($value){
   $value = is_array($value) ?
@@ -55,6 +52,7 @@ else{
 				
 				function queryParser(nam){
 					
+								localStorage.removeItem('ID');
 								var  url = window.location.href;
 								name = nam.replace(/[\[\]]/g, '\\$&');
 								var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
@@ -71,26 +69,56 @@ else{
 								return(queryPara);
 				}
 				
+ 
+				function huoQuTok(){
+					localStorage.removeItem('LingPai');
+					if ($('.norightborder').is(':visible')){
+							if($('.btnGreens').is(':visible')){
+									var attr = $('.btnGreens').attr('onclick');
+									var attrlen = attr.length;
+									var exp = attr.split(',');
+									var tok = exp[1].split('\'');
+									tok = tok[1];
+							}
+					}
+					return tok;
+				}
+				
+				function huoQuID(){
+					localStorage.removeItem('ID');
+					if ($('.norightborder').is(':visible')){
+							if($('.btnGreens').is(':visible')){
+									var attr = $('.btnGreens').attr('onclick');
+									var attrlen = attr.length;
+									var exp = attr.split(',');
+									var tok = exp[0].split('(');
+									var tok = tok[1].split('\'');
+									id = tok[1];
+							}
+					}
+					return id;
+				}
+ 
+ 					var lingPai = huoQuTok();	var id = huoQuID();
+					 
+ 					localStorage.setItem('LingPai', lingPai);	localStorage.setItem('Id', id);
+						
+ 
 						window.onload = function (){
-							
-							
+							 var ID = localStorage.getItem('Id');	console.log('107 ID = '+ID);
 							var g = queryParser('g');	console.log('g = '+g);
 							var m = queryParser('m');	console.log('m = '+m);
 							var a = queryParser('a');	console.log('a = '+a);
 							
 							if (queryParser('token')){
+								localStorage.removeItem('token');
 								var t = queryParser('token');	console.log('ln 151 t = '+t);
 								localStorage.setItem('tok', t);
 							}
 							
-							if (queryParser('id')){
-								var id = queryParser('id');
-								localStorage.setItem('ID', id);
-							}
-							
 								if (m == 'Function')
 								{
-									var t = queryParser('token'); 	console.log('ln 155 t = '+t);
+									var t = queryParser('token'); 	console.log('ln 155 t = '+t); var ID = localStorage.getItem('Id');	console.log('120 ID = '+ID);
 									$('.contentmanage').attr('style', 'width: auto');
 									$('.subCatalogList > a').attr('style', 'height: 50px'); $('.selected > a').attr('style', 'height: 50px');				
 									document.getElementsByTagName('a')[20].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\'material-icons\'>collections</div> <div style = \'float: left; margin-top: 5px;\'>图文组自动回复</div>';
@@ -116,7 +144,7 @@ else{
 								}
 								
 								else if (g == 'Home' && m == 'Index' && a == 'price')
-								{	// price detected
+								{	// 
 									
 									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
 									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
@@ -126,53 +154,56 @@ else{
 								}
 								
 								else if (g == 'Home' && m == 'Index' && a == 'fc')
-								{	// price detected
+								{	// 
 									
 									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
 									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
-									window.open('http://www.o2ofever.com/price');
+									window.open('http://www.o2ofever.com/functionalities');
 									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
 									win.focus();
 								}
 								
 								else if (g == 'Home' && m == 'Index' && a == 'aboutus2')
-								{	// price detected
+								{	// 
 									
 									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
 									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
-									window.open('http://www.o2ofever.com/price');
+									window.open('http://www.o2ofever.com/about-us');
 									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
 									win.focus();
 								}
 								
 								else if (g == 'Home' && m == 'Index' && a == 'common')
-								{	// price detected
+								{	// 
 									
 									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
 									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
-									window.open('http://www.o2ofever.com/price');
+									window.open('http://www.o2ofever.com/case-studies/power-888');
 									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
 									win.focus();
 								}
 								
-								else if (g == 'Home' && m == 'Index' && a == 'index')
-								{	// price detected
+								else if (g == 'User' && m == 'Index' && a == 'index')
+								{	// 侦测到控制器
 									
-									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
-									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
-									window.open('http://www.o2ofever.com/price');
+										var LP = localStorage.getItem('LingPai');
+										var ID = localStorage.getItem('Id');	console.log('189 ID = '+ID);
+									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+ID+'&token='+LP, '_self');
+									win.focus();
+								}
+								
+								else if (g == 'Home' && m == 'Index' && a == 'help')
+								{	//
+										var LP = localStorage.getItem('LingPai');
+										var ID = localStorage.getItem('Id');
+									window.open('http://www.o2ofever.com/contact-us');
 									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
 									win.focus();
 								}
 								
 								else if (g == 'Home' && m == 'Index' && a == 'help')
-								{	// price detected
-									
-									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
-									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
-									window.open('http://www.o2ofever.com/price');
-									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
-									win.focus();
+								{	//
+									localStorage.clear();
 								}
 					}
 					
@@ -218,12 +249,5 @@ else{
 							$('.container').css({'display':'block', 'border':'solid 1px #c3c3c3', 'width': RcontainerBox+'px', 'height':'535px', 'padding-left': pl+'px', 'border':'5px solid #c3c3c3'});
 					}
 				</script>";
-				
-	if ($_GET['a'] === 'price')
-	{
-		echo "";
-		die();
-		
-	}
 }
 ?>
