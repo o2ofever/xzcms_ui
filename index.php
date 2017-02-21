@@ -1,107 +1,46 @@
 <?php
 // test
-session_start();
-
-$_SESSION['mim'] = $_POST['mim'];
-//  media="screen"
-?>
-
-<html>
-	<head>
-		<link rel ='stylesheet'	href = 'https://bootswatch.com/cerulean/bootstrap.min.css'>
-	</head>
-<script> var token = ".$token.";</script>
-
-<?php
-if ($_SESSION['mim'] != 'samuel')
-{
-?>
-	
-		<main>
-			<div class = 'container container-fluid' style = 'padding-top: 250px;'> 
-				<div class="alert alert-dismissible alert-warning">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-				<h2>维修工程进行中!</h2>
-				<h3>Our system is Under Construction!</h3>
-				<span style = 'float: left; margin-top: 8px; margin-bottom: 12px;'>9:00am to 23:00, Monday, 20th Feb 2017</span>
-				<div style = 'clear: both;'></div>
-					<div style = 'float: left;
-						border-radius: 100px;
-						width: 100%;
-						padding: 18px;
-						text-align: center;'>
-					 <span class = 'glyphicon glyphicon-wrench' style = 'font-size: 50px; text-shadow: 2px 2px 10px #5d5353;'></span>
-					</div>
-						<div style = 'clear: both;'></div>
-						<form class="form-horizontal" action = '' method = 'POST'>
-						  <fieldset>
-								<div class="form-group">
-								  <label for="inputEmail" class="col-lg-5 control-label">Authorized personnel only:</label>
-								  <div class="col-lg-5">
-									<input class="form-control" name ="mim" placeholder="密码" type="text">
-								  </div>
-								</div>
-							<div class="form-group" style = 'text-align: center'>
-							  <div class="col-lg-10 col-lg-offset-2" style = 'margin-left: 100px; width: 50%; margin: 0 auto; '>
-								<button type="submit" class="btn btn-primary" style = '
-								margin-left: 500px;'>Submit</button>
-							  </div>
-							</div>
-						  </fieldset>
-						</form>
-			 
-				</div>
-			</div>
-		</main>
-<?php
-
-die();
-}
 header("Content-type: text/html; charset=utf-8");
 ini_set('display_errors', '1');
 error_reporting(E_ALL ^ E_NOTICE);
 
-if ($_GET['token'])
-	$token = $_GET['token'];
 
 if ($_GET['a'] === 'price')
-	{ 
+	{
 		echo "<script>
-				var location = window.location.href; console.log('location = '+location);
 				window.open('http://www.o2ofever.com/price');
-				// var url = \"<?php echo $url; ?>\"; console.log('url = '+url);
-				var win = window.open(location, '_self');
+				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
 				win.focus();
 			  </script>";
 		die();
 		
 	}
 elseif  ($_GET['a'] === 'common')
-	{ 
+	{
 		echo "<script>
 				window.open('http://www.o2ofever.com/case-studies/power-888');
-				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token='.$tok, '_self');
+				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
 				win.focus();
 			  </script>";
 		die();
 		
 	}
 elseif  ($_GET['a'] === 'help')
-	{ 
+	{
 		echo "<script>
 				window.open('http://www.o2ofever.com/contact-us');
-				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token='.$tok, '_self');
+				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
 				win.focus();
 			  </script>";
 		die();
 		
 	}
 elseif  ($_GET['a'] === 'about2')
-	{ 
+	{
 		echo "<script>
 				
 				window.open('http://www.o2ofever.com/about-us');
-				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6, '_self');
+				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
 				win.focus();
 			  </script>";
 		die();
@@ -109,60 +48,25 @@ elseif  ($_GET['a'] === 'about2')
 	}
 elseif  ($_GET['a'] === 'fc')
 	{
-		
-?>	
-	<script>
-				(function(){
-					var location = [];
-						location = window.location.href.toString(); console.log('location = '+location);
-						console.log('token = '+token);
-					//			window.open('http://www.o2ofever.com/functionalities');
-			//	return;
-			//	var url = 'http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=4&token='+location;
-				
-			//	var win = window.open(, '_self');
-									//	http://wxoa.o2ofever.com/index.php?g=Home&m=Index&a=fc
-			//	win.focus();
-						
-
-
-					return false;
-					
-				})();
-	</script>
-<?php
+		echo "<script>
+				window.open('http://www.o2ofever.com/functionalities');
+				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
+				win.focus();
+			  </script>";
 		die();
 		
 	}
 elseif  ($_GET['a'] === NULL)
 	{
-		 if (isset( $_GET['token']))
-		 {	$tok = $_GET['token'];
-			$url = 'http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token='.$tok;
-		 
-			echo "<script>
-					window.open('http://www.o2ofever.com/');
-					var wined = window.open($url, '_self');
-					wined.focus();
-				  </script>";
-			die();
-		}
+		echo "<script>
+				window.open('http://www.o2ofever.com/');
+				var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
+				win.focus();
+			  </script>";
+		die();
 		
 	}
 	
-	
-elseif  ($_GET['g'] == 'User' && $_GET['m'] == 'Index' && $_GET['a'] === 'index')
-	{
-		 if (isset( $_GET['token']))
-		 {	$tok = $_GET['token'];
-			$url = 'http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token='.$tok;
-		 
-			echo "<script>
-					window.open($url, '_self');
-				  </script>";
-			die();
-		}
-	}
 	
 	
 		
@@ -215,7 +119,7 @@ else{
 			<script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
 			<script>
 					window.onload = function (){
-								var url = window.location.href; console.log('url 157 = '+url);
+								var  url = window.location.href;
 								var name = 'm';
 								name = name.replace(/[\[\]]/g, '\\$&');
 								var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
@@ -224,9 +128,16 @@ else{
 								if (!results[2]) console.log('result = empty');
 								var m_parameter = decodeURIComponent(results[2].replace(/\+/g, \" \"));
 								console.log('m_parameter ='+m_parameter);
+						if ($('.norightborder').is(':visible')){
+							if($('.btnGreens').is(':visible')){
+								var attr = $('.btnGreens').attr('onclick');
+								var attrlen = attr.length;
+								var exp = attr.split(',');
+								var tok = exp[1].split('\'');
+							}
+						}
 						if (m_parameter == 'Function')
 						{
-							console.log('ln 142');
 							$('.contentmanage').attr('style', 'width: auto');
 							$('.subCatalogList > a').attr('style', 'height: 50px'); $('.selected > a').attr('style', 'height: 50px');				
 							document.getElementsByTagName('a')[20].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\'material-icons\'>collections</div> <div style = \'float: left; margin-top: 5px;\'>图文组自动回复</div>';
@@ -256,8 +167,8 @@ else{
 					
 					if ($('.feature_table').is(':visible')){
 							$('.feature_table').css('display', 'none');
-							var htSideBar = $('.sideBar').height();
-							var wd = $(window).width(); var wdSideBar = $('.sideBar').width(); var wdRight = wd - wdSideBar-10; var RcontainerBox = wdRight * 0.85;
+						var htSideBar = $('.sideBar').height();
+						var wd = $(window).width(); var wdSideBar = $('.sideBar').width(); var wdRight = wd - wdSideBar-10; var RcontainerBox = wdRight * 0.85;
 							
 							$('.container').css({'border':'solid 1px #c3c3c3', 'width': RcontainerBox+'px', 'height':'535px'});
 							$('.content').css({'float':'left', 'width': wdRight+'px', 'height': htSideBar+'px'});
@@ -288,6 +199,7 @@ else{
 					
 					if ($('.content').is(':visible'))
 					{
+						
 						var htSideBar = $('.sideBar').height();
 						var wd = $(window).width(); var wdSideBar = $('.sideBar').width(); var wdRight = wd - wdSideBar-58; var RcontainerBox = wdRight * 0.85;  var pl = RcontainerBox * 0.10;
 							$('.content').css({'float':'left', 'width': wdRight+'px', 'height': htSideBar+'px'});
