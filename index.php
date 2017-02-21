@@ -109,34 +109,55 @@ else{
 			<script>
 				var tok = '';
 				
-				function queryParsor(nam){
+				function queryParser(nam){
 					
 								var  url = window.location.href;
 								name = nam.replace(/[\[\]]/g, '\\$&');
 								var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
 								var results = regex.exec(url);
-								if (!results) console.log('result = null');
-								if (!results[2]) console.log('result = empty');
+								if (!results){
+									console.log('result = null');
+									return;
+								}
+								if (!results[2]){
+									console.log('result = empty');
+									return;
+								}
 								var queryPara = decodeURIComponent(results[2].replace(/\+/g, \" \"));
 								return(queryPara);
 				}
 				
-					window.onload = function (){
-
-						var g = queryParsor('g');	console.log('g = '+g);
-						var m = queryParsor('m');	console.log('m = '+m);
-						var a = queryParsor('a');	console.log('a = '+a);
-									
-							if ($('.norightborder').is(':visible')){
+				
+				function huoQuTok(){
+					if ($('.norightborder').is(':visible')){
 									if($('.btnGreens').is(':visible')){
 											var attr = $('.btnGreens').attr('onclick');
 											var attrlen = attr.length;
 											var exp = attr.split(',');
-											tok = exp[1].split('\'');
+											var tok = exp[1].split('\'');
+											tok = tok[1];
 										}
 								}
+					return tok;
+				}
+				/*	 var tok = huoQuTok();
+					console.log('ln 138 tok = '+tok);
+					sessionStorage.setItem('tok', tok);
+				*/	
+						window.onload = function (){
+							var g = queryParser('g');	console.log('g = '+g);
+							var m = queryParser('m');	console.log('m = '+m);
+							var a = queryParser('a');	console.log('a = '+a);
+							
+							if (queryParser('token')){
+								var t = queryParser('token');	console.log('ln 151 t = '+t);
+								var id = queryParser('id');
+								localStorage.setItem('tok', t);
+								localStorage.setItem('ID', id);
+							}
 								if (m == 'Function')
 								{
+									var t = queryParser('token'); 	console.log('ln 155 t = '+t);
 									$('.contentmanage').attr('style', 'width: auto');
 									$('.subCatalogList > a').attr('style', 'height: 50px'); $('.selected > a').attr('style', 'height: 50px');				
 									document.getElementsByTagName('a')[20].innerHTML = '<div style = \'float: left; margin-top: 5px;\' class=\'material-icons\'>collections</div> <div style = \'float: left; margin-top: 5px;\'>图文组自动回复</div>';
@@ -163,9 +184,11 @@ else{
 								
 								if (g == 'Home' && m == 'Index' && a == 'price')
 								{	// price detected
-									console.log('tok = '+tok);
+									
+									var t = localStorage.getItem('tok');	console.log('183 t = '+t);
+									var id = localStorage.getItem('ID');	console.log('183 ID = '+id);
 									window.open('http://www.o2ofever.com/price');
-									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id=6&token=qgsjlx1484101856', '_self');
+									var win = window.open('http://wxoa.o2ofever.com/index.php?g=User&m=Function&a=show&id='+id+'&token='+t, '_self');
 									win.focus();
 								}
 
