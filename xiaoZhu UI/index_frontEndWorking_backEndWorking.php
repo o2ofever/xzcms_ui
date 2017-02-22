@@ -116,7 +116,7 @@ else{
 								localStorage.setItem('tok', t);
 							}
 							
-								if (m == 'Function')
+								if (m == 'Function' || g == 'User')
 								{
 									var t = queryParser('token'); 	console.log('ln 155 t = '+t); var ID = localStorage.getItem('Id');	console.log('120 ID = '+ID);
 									$('.contentmanage').attr('style', 'width: auto');
@@ -141,6 +141,10 @@ else{
 									$('.subCatalogList').css({'width':'210px'});
 									$('.tableContent').attr('style', 'width: auto');
 									$('.ckit').attr('style', 'padding-left: 10px');
+									$('.msgWrap').attr('style', 'width: 100% !important;');
+									$('.ListProduct').attr('style', 'width: 83% !important;');
+									var ww = $(window).width();
+									$('.cLine').attr('style', 'width: '+ww+'px;');
 								}
 								
 								else if (g == 'Home' && m == 'Index' && a == 'price')
@@ -212,6 +216,16 @@ else{
 											$(this).addClass('active');
 											$(this).find('ul').toggleClass('collapse expand');
 										});							
+								}
+								
+								if (g == 'User')
+								{// 功能 模块 设定
+									$('.contentmanage').css({'float':'left', 'width':'100%'});
+									$('.developer').css({'float':'left', 'width':'100%'});
+								//	$('.sideBar').css('float','left');
+								//	$('#sideBar').css('width','12% !important;');
+									$('.sideBar').attr('style','float: left; width: 230px !important;');
+									$('.content').attr('style','float: left; height: auto !important; padding-left: 100px;');
 								}
 					}
 					
